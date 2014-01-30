@@ -4,8 +4,12 @@ App = Ember.Application.create({
 
 App.Router.map(function() {
   this.resource('posts');
-  this.resource('post', { path: 'posts/:post_id' }, function() {
-    this.resource('comments');
+  this.resource('post', { path: '/posts/:post_id' }, function() {
+    this.resource('comments', function() {
+      this.route('new');
+      this.route('create');
+    });
+    this.route('comment', { path: 'comments/:comment_id'});
   });
 });
 

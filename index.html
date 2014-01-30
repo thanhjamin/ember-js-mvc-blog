@@ -40,6 +40,23 @@
 
   <script type="text/x-handlebars" data-template-name="post/index">
     {{title}}
+      <ul>
+        {{#each comment in comments}}
+          <li>{{comment.text}}</li>
+        {{/each}}
+      <ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="post/comment">
+    {{text}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="comments">
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="comments/new">
+    Comments New
   </script>
 
   <script src="js/libs/jquery-1.9.1.js"></script>
