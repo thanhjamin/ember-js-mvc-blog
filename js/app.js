@@ -53,3 +53,16 @@ App.Comment.FIXTURES = [{id:"1", text: "First Comment"},
                         {id:"7", text: "Seventh Comment"},
                         {id:"8", text: "Eighth Comment"},
                         {id:"9", text: "Ninth Comment"}];
+
+App.CommentsNewController=Ember.ObjectController.extend({
+  needs: 'post',
+  text: null,
+  save: function() {
+    var post =
+this.get('controller.post.content');
+  App.Comment.createRecord({ post: post, text:
+this.get('text') });
+
+this.get('target').transitionTo('post.index');
+  }
+})

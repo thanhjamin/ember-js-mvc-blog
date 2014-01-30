@@ -17,7 +17,7 @@
         {{outlet}}
       </div>
       <footer>
-        &copy;2013 Ian Dunlop.
+        Go Seahawks.
       </footer>
     </body>
   </script>
@@ -42,9 +42,11 @@
     {{title}}
       <ul>
         {{#each comment in comments}}
-          <li>{{comment.text}}</li>
+          <li>{{#linkTo post.comment comment}}{{comment.text}}{{/linkTo}}</li>
         {{/each}}
-      <ul>
+      </ul>
+
+    {{#linkTo comments.new}}New Comment{{/linkTo}}
   </script>
 
   <script type="text/x-handlebars" data-template-name="post/comment">
@@ -56,7 +58,12 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="comments/new">
-    Comments New
+  <h3>Comments New</h3>
+
+  <form {{action save on='submit'}}>
+    {{view Ember.TextArea valueBinding="text" placeholder="Enter comment here"}}
+    <button type="submit">Create Comment</button>
+  </form>
   </script>
 
   <script src="js/libs/jquery-1.9.1.js"></script>
